@@ -1,13 +1,15 @@
 import React from 'react'
 import { Posts } from './Posts'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
+const queryClient = new QueryClient()
 
 const App = () => {
   return (
-    <div>
+    <QueryClientProvider client={queryClient}>
       <h1>Blog posts</h1>
       <Posts />
-    </div>
+    </QueryClientProvider>
   )
 }
 
