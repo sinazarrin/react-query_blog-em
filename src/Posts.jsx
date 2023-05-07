@@ -16,10 +16,13 @@ export function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   // replace with useQuery
-  const { data, isLoading } = useQuery("posts", fetchPosts)
+  const { data, isLoading, isError } = useQuery("posts", fetchPosts)
+
+  if (isLoading) return <h2>Loading...</h2>
+
+  if (isError) return <p>Failed to fetch</p>
 
   return (
-    isLoading ? "Loading ..." :
       <>
         <ul>
           {data.map((post) => (
